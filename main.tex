@@ -1,0 +1,135 @@
+\documentclass[a4paper, 11pt, oneside]{book} %oneside is for equal margins
+
+
+\usepackage{style} %loading the style.sty which contains all the necessary packages
+
+\graphicspath{{figures/}}
+
+\includeonly
+{
+    sections/DaoDeJingText,
+}
+
+%adding a convenient command 
+\newcommand\addEmptyPage{
+        \null 
+        \thispagestyle{empty}
+        \addtocounter{page}{-1}
+        \NoBgThispage
+        \newpage
+   }
+
+
+
+\sectionfont{\fontsize{18}{15}\selectfont}
+
+%\fancyhf[HRE,HLO]{\scshape Tao Te Ching}
+%\fancyhf[HLE, HRO]{\scshape Lao Tzu}
+
+
+%---------------------------Designing Header/Footer----------------------------------------
+%-------------------------------------------------------------------------------------------
+\fancyhf{} %Clears header/footer
+
+\fancyhead[L]{\ifodd\value{page} \thepage\else \scshape Dao De Jing \fi}
+\fancyhead[R]{\ifodd\value{page} \scshape Dao De Jing \else \thepage \fi}
+\fancyfoot[C]{\slshape{Lao Tzu}}
+%-------------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------
+
+
+
+\begin{document}
+%---------------------------------------------------------------------------------------
+%----------------------TITLE PAGE-------------------------------------------------------
+%---------------------------------------------------------------------------------------
+\begin{titlepage}
+    \centering %Centre everything on the title page
+    \scshape %Use small caps on the entire title page
+    
+    \vspace*{\baselineskip} %white space at the top of the page
+    %-----------------------------------------------------------------
+    %   Title
+    %-----------------------------------------------------------------
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} %Thick horizontal rule
+    \rule{\textwidth}{0.4pt}%Thin horizontal rule
+    \vspace{1.25\baselineskip}
+    
+    {\LARGE Dao De Jing} %Title
+    
+    \vspace{0.75\baselineskip}
+    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace*{3.2pt}
+    \rule{\textwidth}{1.6pt}
+    
+    \vspace{0.5\baselineskip} %Whitespace after the book's title
+    
+    %---------------------------------------------------------------
+    %   Subtitle
+    %---------------------------------------------------------------
+    The book of the Way of Virtue
+   
+    
+    %---------------------------------------------------------------
+    %   Authors
+    %---------------------------------------------------------------  
+   
+   
+   {\scshape\Large by LAO TZU\\}
+   \vspace{1.5\baselineskip}
+   \textit{Sacred Books of the East, Vol. 39\\1891}
+   \vspace{6\baselineskip}
+   \begin{figure}[h!]
+       \centering
+       \includegraphics[width=4cm]{Y&Y dragons.png}
+       
+       \label{fig:front_logo}
+   \end{figure}
+   \vfill
+    Translated from Mandarin by\\{\scshape J. Legge\\}
+   
+    
+\end{titlepage}
+%adding a blank page for two-sided printing purposes
+\addEmptyPage{}
+
+\thispagestyle{empty} %necessary for keeping the page absolutely blank (no numbering, watermarks)
+
+
+%frontmatter containing foreword and code for watermarks
+\frontmatter
+
+\AddEverypageHook{%
+\ifthenelse{\isodd{\value{page}}}%
+{\backgroundsetup{angle=0, contents=\includegraphics{Tao.png}}%
+}%
+{\backgroundsetup{angle=0, scale = 2.2, contents=\includegraphics{Tao 2.png}}
+}%
+\BgMaterial}
+
+\tableofcontents
+
+\newpage
+
+{\LARGE{\textbf{Foreword}}}
+
+\addcontentsline{toc}{chapter}{\protect \numberline{} Foreword}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eleifend, tortor et scelerisque eleifend, lectus libero sollicitudin dolor, quis vehicula velit augue quis nisi. Cras aliquam leo a velit auctor, sollicitudin consectetur tellus maximus. Pellentesque rhoncus nunc at tristique rhoncus. Quisque scelerisque lacus felis, non ultrices quam maximus quis. Etiam auctor quam enim, nec feugiat sem rutrum et. Integer vel nibh lobortis eros aliquam ultricies eu vitae neque. Nullam at lorem diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam ipsum enim, posuere vel volutpat vitae, faucibus et ex.
+
+Etiam maximus sagittis dolor. Cras ut luctus sapien, sit amet fermentum tellus. Integer malesuada purus non metus porttitor scelerisque. Maecenas feugiat felis id dui congue, non finibus dui fringilla. Vivamus sodales rhoncus leo eget dignissim. Fusce et sem mollis, feugiat sapien vel, consectetur nibh. Sed interdum erat odio, tempor dignissim enim sagittis sit amet. Vivamus ipsum magna, tempus a quam ut, vulputate vehicula ante. Quisque luctus ut urna id hendrerit. Praesent eu ultricies velit. Vivamus imperdiet, lacus ut rutrum blandit, tellus nunc maximus tortor, quis fringilla massa mi vitae metus. Mauris semper quis velit ac mollis. Cras at libero mi. Fusce vitae elit mi. Aliquam risus nulla, finibus non tristique vitae, imperdiet id erat. Suspendisse potenti.
+
+Cras at diam vulputate, aliquet libero ut, vestibulum nunc. Nunc tristique quam turpis, ac mattis dolor lacinia a. Nunc efficitur ac urna ut aliquam. Maecenas hendrerit pretium purus at sodales. Pellentesque at ex leo. Aliquam molestie nulla mattis, volutpat augue sit amet, sodales metus. Nam sit amet mattis mi. Maecenas ultricies elit lacinia, efficitur sapien quis, vehicula felis. Nunc luctus mollis neque, eu pellentesque massa accumsan at. In hac habitasse platea dictumst.
+
+
+\newpage
+
+%-------------------------------------------------------------------------------------------
+%-----------------------------------Start of the book main text-----------------------------
+%-------------------------------------------------------------------------------------------
+\mainmatter
+
+\include{sections/DaoDeJingText}
+
+
+
+
+\end{document}
